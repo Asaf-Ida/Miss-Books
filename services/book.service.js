@@ -1,24 +1,20 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
-const CAR_KEY = 'booksDB'
-_createCars()
+const BOOK_KEY = 'booksDB'
+_createBooks()
 
-export const carService = {
+export const bookService = {
     query,
     get,
     remove,
     save,
-    getEmptyCar,
-    getDefaultFilter,
-    getSpeedStats,
-    getVendorStats
 }
 // For Debug (easy access from console):
-// window.cs = carService
+window.bs = bookService
 
 function query(filterBy = {}) {
-    return storageService.query(CAR_KEY)
+    return storageService.query(BOOK_KEY)
         .then(cars => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
@@ -33,23 +29,23 @@ function query(filterBy = {}) {
         })
 }
 
-function get(carId) {
-    return storageService.get(CAR_KEY, carId)
+function get(bookId) {
+    return storageService.get(BOOK_KEY, bookId)
         .then(car => {
             car = _setNextPrevCarId(car)
             return car
         })
 }
 
-function remove(carId) {
-    return storageService.remove(CAR_KEY, carId)
+function remove(bookId) {
+    return storageService.remove(BOOK_KEY, bookId)
 }
 
-function save(car) {
-    if (car.id) {
-        return storageService.put(CAR_KEY, car)
+function save(book) {
+    if (book.id) {
+        return storageService.put(BOOK_KEY, book)
     } else {
-        return storageService.post(CAR_KEY, car)
+        return storageService.post(BOOK_KEY, book)
     }
 }
 
@@ -85,23 +81,30 @@ function save(car) {
 //         })
 // }
 
-function _createCars() {
-    let cars = utilService.loadFromStorage(CAR_KEY)
-    if (!cars || !cars.length) {
-        cars = []
-        const vendors = ['audu', 'fiak', 'subali', 'mitsu']
-        for (let i = 0; i < 6; i++) {
-            const vendor = vendors[utilService.getRandomIntInclusive(0, vendors.length - 1)]
-            cars.push(_createCar(vendor, utilService.getRandomIntInclusive(80, 300)))
-        }
-        utilService.saveToStorage(CAR_KEY, cars)
+function _createBooks() {
+    let books = utilService.loadFromStorage(BOOK_KEY)
+    if (!books || !books.length) {
+        books = [
+            _createCar('Harry Potter', 'EUR', true),
+            _createCar('Human History', 'DOL', false),
+            _createCar('Lord of the rings', 'EUR', true)
+        ]
+        utilService.saveToStorage(BOOK_KEY, books)
     }
 }
 
-function _createCar(vendor, maxSpeed = 250) {
-    const car = getEmptyCar(vendor, maxSpeed)
-    car.id = utilService.makeId()
-    return car
+function _createCar(title, currencyCode, isOnSale) {
+    const book = {
+        id: utilService.makeId(),
+        title,
+        listPrice: {
+            amount: utilService.getRandomIntInclusive(0, 250),
+            currencyCode,
+            isOnSale
+        }
+    }
+
+    return book
 }
 
 // function _setNextPrevCarId(car) {
