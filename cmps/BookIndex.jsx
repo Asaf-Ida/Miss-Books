@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 
 import { storageService } from "../services/async-storage.service.js"
 import { bookService } from "../services/book.service.js"
+import { BookList } from "./BookList.jsx"
 
 export function BookIndex() {
     const [books, setBooks] = useState([])
@@ -13,8 +14,8 @@ export function BookIndex() {
 
     return (
         <section>
-            <span>BookIndex</span>
-            <pre>{JSON.stringify(books, null, 4)}</pre>
+            <h2>Books</h2>
+            <BookList books={books}/>
         </section>
     )
 }
