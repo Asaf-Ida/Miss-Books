@@ -9,3 +9,5 @@
 
 /* Components */
 @import "RootCmp.css";
+@import "cmps/bookList.css";
+@import "cmps/bookPreview.css";
