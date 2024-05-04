@@ -1,0 +1,12 @@
+.book-details {
+    margin-block-start: 1em;
+    width: 300px;
+    padding: 1em;
+    display: grid;
+    justify-content: center;
+    background-color: orange;
+}
+
+.book-details button {
+    justify-self: end;
+}
