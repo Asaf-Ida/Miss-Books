@@ -9,6 +9,7 @@ export const bookService = {
     get,
     remove,
     save,
+    getDefaultFilter
 }
 // For Debug (easy access from console):
 window.bs = bookService
@@ -53,9 +54,9 @@ function save(book) {
 //     return { vendor, maxSpeed }
 // }
 
-// function getDefaultFilter(filterBy = { txt: '', minSpeed: 0 }) {
-//     return { txt: filterBy.txt, minSpeed: filterBy.minSpeed }
-// }
+function getDefaultFilter(filterBy = { txt: '', maxPrice: 0 }) {
+    return { txt: filterBy.txt, maxPrice: filterBy.maxPrice }
+}
 
 // function getSpeedStats() {
 //     return storageService.query(CAR_KEY)

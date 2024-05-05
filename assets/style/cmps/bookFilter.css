@@ -1,0 +1,13 @@
+.book-filter {
+    margin-block-start: 1em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px;
+    background-color: lightseagreen;
+}
+
+.book-filter h3 {
+    margin-inline-end: auto;
+}
