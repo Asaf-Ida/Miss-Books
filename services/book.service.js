@@ -16,17 +16,17 @@ window.bs = bookService
 
 function query(filterBy = {}) {
     return storageService.query(BOOK_KEY)
-        .then(cars => {
+        .then(books => {
             if (filterBy.txt) {
                 const regExp = new RegExp(filterBy.txt, 'i')
-                cars = cars.filter(car => regExp.test(car.vendor))
+                books = books.filter(book => regExp.test(book.title))
             }
 
-            if (filterBy.minSpeed) {
-                cars = cars.filter(car => car.maxSpeed >= filterBy.minSpeed)
+            if (filterBy.maxPrice) {
+                books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
             }
 
-            return cars
+            return books
         })
 }
 
