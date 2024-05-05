@@ -1,4 +1,3 @@
-import { BookDetails } from "./BookDetails.jsx"
 import { BookPreview } from "./BookPreview.jsx"
 
 export function BookList({ books, onShowDetails }) {
