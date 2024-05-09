@@ -12,3 +12,19 @@
     margin-block-start: 1em;
     justify-self: end;
 }
+
+.book-details .expensive {
+    color: red;
+}
+
+.book-details .cheap {
+    color: green;
+}
+
+.book-details .on-sale-sign {
+    border: 2px solid greenyellow;
+    background-color: rgb(25, 166, 25);
+    padding: 0.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+}

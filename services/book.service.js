@@ -124,7 +124,7 @@ function _createBooks() {
             thumbnail: `assets/BooksImages/${i + 1}.jpg`, 
             language: "en", 
             listPrice: { 
-                amount: utilService.getRandomIntInclusive(80, 500), 
+                amount: utilService.getRandomIntInclusive(1, 300), 
                 currencyCode: "EUR", 
                 isOnSale: Math.random() > 0.7 
             }
