@@ -1,11 +1,16 @@
 .book-details {
     margin-block-start: 1em;
-    width: 300px;
+    width: 500px;
     padding: 1em;
     display: grid;
     justify-content: center;
     background-color: orange;
     text-align: center;
+}
+
+.book-details img {
+    height: 80%;
+    margin: 1em auto;
 }
 
 .book-details button {

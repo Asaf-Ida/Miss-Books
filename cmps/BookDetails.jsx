@@ -1,3 +1,5 @@
+import { LongTxt } from "./LongTxt.jsx"
+
 export function BookDetails({ book, setSelectedBook}) {
     const isOnSale = book.listPrice.isOnSale ? 'On Sale' : ''
     const OnSaleSign = book.listPrice.isOnSale ? 'on-sale-sign' : ''
@@ -35,6 +37,7 @@ export function BookDetails({ book, setSelectedBook}) {
         <p>{classifyBookAge()}</p>
         <p>amount: <span className={classifyBookPrice()}>{book.listPrice.amount}</span></p>
         <p className={OnSaleSign}>{isOnSale}</p>
+        <LongTxt txt={book.description}/>
         <img src={book.thumbnail} />
         <button onClick={() => setSelectedBook(null)}>Close</button>
     </section>
