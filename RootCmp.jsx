@@ -7,6 +7,7 @@ import { BookIndex } from "./pages/BookIndex.jsx"
 import { HomePage } from "./pages/HomePage.jsx"
 import { AppHeader } from "./cmps/appHeader.jsx"
 import { BookEdit } from "./pages/BookEdit.jsx"
+import { AddReview } from "./pages/AddReview.jsx"
 
 export function RootCmp() {
     
@@ -21,6 +22,7 @@ export function RootCmp() {
                     <Route path="/book/:bookId" element={ <BookDetails /> }/>
                     <Route path="/book/edit" element={ <BookEdit /> }/>
                     <Route path="/book/edit/:bookId" element={ <BookEdit /> }/>
+                    <Route path="/book/:bookId/review" element={ <AddReview /> }/>
                 </Routes>
             </main>
         </Router>

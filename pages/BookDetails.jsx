@@ -2,6 +2,7 @@ const { useState, useEffect } = React
 const { useParams, useNavigate } = ReactRouter
 const { Link } = ReactRouterDOM
 
+import { RenderReviews } from "../cmps/RenderReviews.jsx"
 import { LongTxt } from "../cmps/LongTxt.jsx"
 import { bookService } from "../services/book.service.js"
 
@@ -66,6 +67,9 @@ export function BookDetails() {
         <p className={OnSaleSign}>{isOnSale}</p>
         <LongTxt txt={book.description}/>
         <img src={book.thumbnail} />
+
+        <RenderReviews book={ book }/>
+        <Link to={`/book/${book.id}/review`}><button>Add Review</button></Link>
         <section className="actions">
             <Link to={`/book/${book.prevBookId}`}><button>Previous</button></Link>
             <Link to={`/book/${book.nextBookId}`}><button>Next</button></Link>

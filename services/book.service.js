@@ -10,7 +10,10 @@ export const bookService = {
     remove,
     save,
     getDefaultFilter, 
-    getEmptyBook
+    getEmptyBook, 
+    getEmptyReview, 
+    addReview,
+    deleteReview
 }
 // For Debug (easy access from console):
 window.bs = bookService
@@ -51,6 +54,24 @@ function save(book) {
     }
 }
 
+function addReview(bookId, review) {
+    review.id = utilService.makeId()
+    return get(bookId)
+        .then(book => {
+            if (book.reviews) {
+                book.reviews.push(review)
+            } else {
+                book.reviews = [review]
+            }
+            return storageService.put(BOOK_KEY, book)
+        })
+}
+
+function deleteReview(book, reviewId) {
+    book.reviews = book.reviews.filter(review => review.id !== reviewId)
+    return storageService.put(BOOK_KEY, book)
+}
+
 function getEmptyBook(title = '', amount = '') {
     const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
     const book = {
@@ -74,6 +95,10 @@ function getEmptyBook(title = '', amount = '') {
 
 function getDefaultFilter(filterBy = { txt: '', maxPrice: 0 }) {
     return { txt: filterBy.txt, maxPrice: filterBy.maxPrice }
+}
+
+function getEmptyReview(fullname = '', rating = '') {
+    return { fullname, rating }
 }
 
 // function getSpeedStats() {

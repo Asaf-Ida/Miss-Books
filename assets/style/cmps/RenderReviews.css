@@ -1,0 +1,17 @@
+.reviews-list {
+    margin: 1em auto;
+}
+
+.reviews-list ul li {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.reviews-list ul li button {
+    justify-self: end;
+}
+
+.reviews-list ul span {
+    font-weight: bold;
+}
