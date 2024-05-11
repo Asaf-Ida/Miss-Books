@@ -1,6 +1,33 @@
-import { LongTxt } from "./LongTxt.jsx"
+const { useState, useEffect } = React
+const { useParams, useNavigate } = ReactRouter
+const { Link } = ReactRouterDOM
 
-export function BookDetails({ book, setSelectedBook}) {
+import { LongTxt } from "../cmps/LongTxt.jsx"
+import { bookService } from "../services/book.service.js"
+
+export function BookDetails() {
+    const [book, setBook] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
+
+    const params = useParams()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setIsLoading(true)
+        bookService.get(params.bookId)
+            .then(book => {
+                setBook(book)
+            })
+            .catch(() => {
+                alert('Something went wrong')
+                navigate('/book')
+            })
+            .finally(() => {
+                setIsLoading(false)
+            })
+    }, [params.bookId])
+
+    if (isLoading) return <h3>Loading...</h3>
     const isOnSale = book.listPrice.isOnSale ? 'On Sale' : ''
     const OnSaleSign = book.listPrice.isOnSale ? 'on-sale-sign' : ''
 
@@ -39,6 +66,10 @@ export function BookDetails({ book, setSelectedBook}) {
         <p className={OnSaleSign}>{isOnSale}</p>
         <LongTxt txt={book.description}/>
         <img src={book.thumbnail} />
-        <button onClick={() => setSelectedBook(null)}>Close</button>
+        <section className="actions">
+            <Link to={`/book/${book.prevBookId}`}><button>Previous</button></Link>
+            <Link to={`/book/${book.nextBookId}`}><button>Next</button></Link>
+            <Link to="/book"><button>Close</button></Link>
+        </section>
     </section>
 }

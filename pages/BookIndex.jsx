@@ -1,25 +1,21 @@
 const { useState, useEffect } = React
 
+const { Link } = ReactRouterDOM
+
 import { bookService } from "../services/book.service.js"
-import { BookDetails } from "./BookDetails.jsx"
-import { BookFilter } from "./BookFilter.jsx"
-import { BookList } from "./BookList.jsx"
+import { BookFilter } from "../cmps/BookFilter.jsx"
+import { BookList } from "../cmps/BookList.jsx"
 
 export function BookIndex() {
 
 
     const [books, setBooks] = useState([])
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
-    const [selectedBook, setSelectedBook] = useState(null)
 
     useEffect(() => {
         bookService.query(filterBy)
             .then((books) => setBooks(books))
     }, [filterBy])
-
-    function showBookDetails(book) {
-        setSelectedBook(book)
-    }
 
     function onSetFilterBy(newFilter) {
         setFilterBy(newFilter)
@@ -28,9 +24,9 @@ export function BookIndex() {
     return (
         <section className="book-index">
             <h2>Books</h2>
+            <Link to="/book/edit"><button>Add a Book</button></Link>
             <BookFilter filterBy={filterBy} onFilter={onSetFilterBy}/>
-            {!selectedBook && <BookList books={books} onShowDetails={showBookDetails} />}
-            {selectedBook && <BookDetails book={selectedBook} setSelectedBook={setSelectedBook} />}
+            <BookList books={books}/>
         </section>
     )
 }

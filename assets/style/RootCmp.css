@@ -14,5 +14,5 @@ header h1 {
 header nav {
     display: flex;
     gap: 1em;
-    color: whitesmoke;
+    color: black;
 }
