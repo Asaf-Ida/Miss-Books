@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 
 import { bookService } from "../services/book.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export function RenderReviews({ book }) {
     if (!book.reviews) return
@@ -14,8 +15,11 @@ export function RenderReviews({ book }) {
     function deleteReview(reviewId) {
         bookService.deleteReview(book, reviewId)
             .then(() => {
-                console.log('review has been deleted')
+                showSuccessMsg('The review has been deleted successfully!')
                 setReviews(prevReviews => prevReviews.filter(review => review.id !== reviewId))
+            })
+            .catch(() => {
+                showErrorMsg('The review could not be deleted')
             })
     }
 
