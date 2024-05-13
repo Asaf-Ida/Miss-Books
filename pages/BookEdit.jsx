@@ -40,7 +40,15 @@ export function BookEdit() {
                 value = target.checked
                 break;
         }
-        setBook(prevBook => ({ ...prevBook, [prop]: value}))
+
+        if (prop === 'title') {
+            setBook(prevBook => ({ ...prevBook, [prop]: value}))
+        } else {
+            setBook(prevBook => {
+                const newListPrice = { ...prevBook.listPrice, [prop]: value }
+                return { ...prevBook, listPrice: newListPrice }
+            })
+        }
     }
 
     return <section className="book-edit">
