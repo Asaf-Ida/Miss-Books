@@ -8,6 +8,7 @@ import { HomePage } from "./pages/HomePage.jsx"
 import { AppHeader } from "./cmps/appHeader.jsx"
 import { BookEdit } from "./pages/BookEdit.jsx"
 import { AddReview } from "./pages/AddReview.jsx"
+import { UserMsg } from "./cmps/UserMsg.jsx"
 
 export function RootCmp() {
     
@@ -25,6 +26,7 @@ export function RootCmp() {
                     <Route path="/book/:bookId/review" element={ <AddReview /> }/>
                 </Routes>
             </main>
+                    <UserMsg />
         </Router>
     )
 }

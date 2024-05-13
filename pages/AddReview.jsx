@@ -2,6 +2,7 @@ const { useState } = React
 const { useParams, useNavigate } = ReactRouter
 
 import { bookService } from "../services/book.service.js"
+import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 
 export function AddReview() {
     const [review, setReview] = useState(bookService.getEmptyReview())
@@ -11,9 +12,12 @@ export function AddReview() {
     function onSave(ev) {
         ev.preventDefault()
         bookService.addReview(params.bookId, review)
-            .then(() => navigate(`/book/${params.bookId}`))
+            .then(() => {
+                navigate(`/book/${params.bookId}`)
+                showSuccessMsg('The review has been saved successfully!')
+            })
             .catch(() => {
-                alert('coudnt save...')
+                showErrorMsg('The review could not be saved')
                 navigate(`/book/${params.bookId}`)
             })
     }
