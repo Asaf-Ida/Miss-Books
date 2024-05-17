@@ -2,7 +2,24 @@
     margin-block-end: 2em;
 }
 
+
 .add-book-review form {
-    display: flex;
-    gap: 0.5em;
+    display: grid;
+    row-gap: 2em;
+}
+
+.add-book-review form input {
+    margin-inline-end: auto;
+}
+
+.add-book-review form input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+.add-book-review form label {
+    margin-right: 1em;
+}
+
+.add-book-review form button {
+    margin-inline-start: auto;
 }
