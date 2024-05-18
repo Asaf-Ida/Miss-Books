@@ -46,3 +46,18 @@ object {
 	display: block;
 	max-width: 100%;
 }
+
+button {
+	min-width: 60px;
+	padding: 0.5em;
+	border-radius: 0.5em;
+
+	background-color: whitesmoke;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+button:hover {
+	background-color: steelblue;
+	color: whitesmoke;
+}

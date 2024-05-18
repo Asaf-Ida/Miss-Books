@@ -10,6 +10,7 @@
 
 .reviews-list ul li button {
     justify-self: end;
+    background-color: rgb(218, 18, 18);
 }
 
 .reviews-list ul span {

@@ -1,0 +1,9 @@
+.book-index .books-header {
+    display: flex;
+    justify-content: space-between;
+    background-color: cadetblue;
+}
+
+.book-index .books-header button {
+    background-color: lightgreen;
+}

@@ -43,3 +43,11 @@
 .book-details .actions a:last-child {
     margin-inline-start: auto;
 }
+
+.book-details .actions button:not(.close-details-btn) {
+    background-color: gold;
+}
+
+.book-details .add-review-btn {
+    background-color: lightgreen;
+}

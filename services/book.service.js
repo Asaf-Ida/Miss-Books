@@ -13,7 +13,8 @@ export const bookService = {
     getEmptyBook, 
     getEmptyReview, 
     addReview,
-    deleteReview
+    deleteReview, 
+    getFilterFromSearchParams
 }
 // For Debug (easy access from console):
 window.bs = bookService
@@ -95,6 +96,13 @@ function getEmptyBook(title = '', amount = '') {
 
 function getDefaultFilter(filterBy = { txt: '', maxPrice: 0 }) {
     return { txt: filterBy.txt, maxPrice: filterBy.maxPrice }
+}
+
+function getFilterFromSearchParams(searchParams) {
+    return {
+        txt: searchParams.get('txt') || '',
+        maxPrice: +searchParams.get('maxPrice') || ''
+    }
 }
 
 function getEmptyReview(fullname = '', rating = '') {

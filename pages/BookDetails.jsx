@@ -69,11 +69,11 @@ export function BookDetails() {
         <img src={book.thumbnail} />
 
         <RenderReviews book={ book }/>
-        <Link to={`/book/${book.id}/review`}><button>Add Review</button></Link>
+        <Link to={`/book/${book.id}/review`}><button className="add-review-btn">Add Review</button></Link>
         <section className="actions">
             <Link to={`/book/${book.prevBookId}`}><button>Previous</button></Link>
             <Link to={`/book/${book.nextBookId}`}><button>Next</button></Link>
-            <Link to="/book"><button>Close</button></Link>
+            <Link to="/book"><button className="close-details-btn">Close</button></Link>
         </section>
     </section>
 }
