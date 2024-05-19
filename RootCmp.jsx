@@ -9,6 +9,7 @@ import { AppHeader } from "./cmps/appHeader.jsx"
 import { BookEdit } from "./pages/BookEdit.jsx"
 import { AddReview } from "./pages/AddReview.jsx"
 import { UserMsg } from "./cmps/UserMsg.jsx"
+import { BookAdd } from "./cmps/BookAdd.jsx"
 
 export function RootCmp() {
     
@@ -20,6 +21,7 @@ export function RootCmp() {
                     <Route path="/" element={ <HomePage /> }/>
                     <Route path="/book" element={ <BookIndex /> }/>
                     <Route path="/about" element={ <AboutUs /> }/>
+                    <Route path="/book/google-books" element={ <BookAdd /> }/>
                     <Route path="/book/:bookId" element={ <BookDetails /> }/>
                     <Route path="/book/edit" element={ <BookEdit /> }/>
                     <Route path="/book/edit/:bookId" element={ <BookEdit /> }/>

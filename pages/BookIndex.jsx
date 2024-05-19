@@ -6,6 +6,7 @@ import { bookService } from "../services/book.service.js"
 import { BookFilter } from "../cmps/BookFilter.jsx"
 import { BookList } from "../cmps/BookList.jsx"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
+import { BookAdd } from "../cmps/BookAdd.jsx"
 
 export function BookIndex() {
 
@@ -40,6 +41,7 @@ export function BookIndex() {
                 <h2>Books</h2>
                 <Link to="/book/edit"><button>Add a Book</button></Link>
             </header>
+            <Link to="/book/google-books"><button>Adding books from google books API</button></Link>
             <BookFilter filterBy={filterBy} onFilter={onSetFilterBy}/>
             <BookList books={books} onRemoveBook={removeBook}/>
         </section>

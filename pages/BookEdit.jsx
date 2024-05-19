@@ -20,13 +20,12 @@ export function BookEdit() {
         ev.preventDefault()
         bookService.save(book)
             .then(() => {
-                navigate('/book')
                 showSuccessMsg(`The book - ${book.title} has been saved successfully!`)
             })
             .catch(() => {
                 showErrorMsg(`The book - ${book.title} couldn't be saved`)
-                navigate('/book')
             })
+            .finally(() => navigate('/book'))
     }
 
     function handleChange({ target }) {

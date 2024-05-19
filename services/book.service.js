@@ -14,7 +14,8 @@ export const bookService = {
     getEmptyReview, 
     addReview,
     deleteReview, 
-    getFilterFromSearchParams
+    getFilterFromSearchParams,
+    addGoogleBook
 }
 // For Debug (easy access from console):
 window.bs = bookService
@@ -84,10 +85,10 @@ function getEmptyBook(title = '', amount = '') {
         pageCount: utilService.getRandomIntInclusive(20, 600), 
         categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]], 
         thumbnail: `assets/BooksImages/1.jpg`, 
-        language: "en", 
+        language: 'en', 
         listPrice: { 
             amount, 
-            currencyCode: "EUR", 
+            currencyCode: '', 
             isOnSale: Math.random() > 0.7 
         }
     }
@@ -107,6 +108,10 @@ function getFilterFromSearchParams(searchParams) {
 
 function getEmptyReview(fullname = '', rating = '') {
     return { fullname, rating }
+}
+
+function addGoogleBook(item) {
+    return storageService.post(BOOK_KEY, item)
 }
 
 // function getSpeedStats() {

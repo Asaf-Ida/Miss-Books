@@ -20,4 +20,5 @@
 @import "cmps/AddReview.css";
 @import "cmps/BookEdit.css";
 @import "cmps/UserMsg.css";
-@import "cmps/star-rating.css"
+@import "cmps/star-rating.css";
+@import "cmps/BookAdd.css";

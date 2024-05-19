@@ -1,0 +1,29 @@
+.google-books {
+    margin: 1em auto;
+}
+
+.google-books ul{
+    display: grid;
+    grid-template-columns: 300px;
+    justify-items: center;
+    row-gap: 2em;
+}
+
+.google-books li {
+    display: flex;
+    justify-content: space-between;
+    min-width: 300px;
+}
+
+.google-books ul li button {
+    min-width: 0;
+    display: inline-block;
+    padding: 0.25em;
+    line-height: 10px;
+    border-radius: 50%;
+
+    background-color: lightgreen;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
